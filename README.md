@@ -40,6 +40,16 @@ This Arduino code is designed to control a motor using the CytronMotorDriver lib
 
 This code achieves soft starting and smoother motor speed control through exponential smoothing while utilizing the CytronMotorDriver library. It can be tailored to various motor control applications by modifying parameters and adding specific logic.
 
-## Question
-- Does this motor suitable for this application?
-- 
+## Answer to the Question
+- "Does this motor suitable for this application?"
+- I personally recommend using the brushless motor for many reasons:
+  1. Higher efficiency.
+  2. longer lifespan.
+  3. less maintenance.
+  4. precise speed control.
+  5. Excellant start up torque.
+  6. light and compact.
+  7. Generates less heat.
+  8. Better suited for applications where noise and heat generation are critical factors.
+-  So for this certain task that seeks cleaning wastes I see that APC requires high efficiency, long-term reliability, precise control, and minimal maintenance, So a brushless motor will be better than the brushed one.
+- But brushless motors are typivally more expensive than brushed motors so this point is a disadvantage againt the brushless motors you may consider doing this comparison.
