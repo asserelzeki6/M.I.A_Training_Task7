@@ -4,6 +4,21 @@ This file contains the code for a robot controller. The robot controller calcula
 
 ## Functions
 
+### `def local_to_global(local_coordinates, theta)`
+   
+Convert local coordinates to global coordinates using a rotational matrix.
+
+**Arguments:**
+
+- `local_coordinates (tuple)`: A tuple containing the local (x, y) coordinates.
+- `theta (float)`: The angle of rotation (in radians).  
+   
+
+**Returns:**
+
+tuple: A tuple containing the global (x, y) coordinates.
+    
+
 ### `get_angular_velocities(vx, vy, omega)`
 
 Returns the angular velocities of the three motors.
