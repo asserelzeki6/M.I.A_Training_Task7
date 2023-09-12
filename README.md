@@ -4,7 +4,7 @@ This file contains the code for a robot controller. The robot controller calcula
 
 ## Functions
 
-### `def local_to_global(local_coordinates, theta)`
+### `local_to_global(local_coordinates, theta)`
    
 Convert local coordinates to global coordinates using a rotational matrix.
 
