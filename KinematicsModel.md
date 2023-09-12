@@ -1,14 +1,6 @@
 # Kinematic Model of a Three-Wheeled Robot
 
-The kinematic model describes the motion of a three-wheeled robot with the following dimensions:
-
-- Radius of the wheels: `r`
-- Distance between the front and rear wheels: `d`
-- Distance between the front wheel and the center of mass: `h`
-
 ## Kinematic Equations
-
-The kinematic equations for the three-wheeled robot are as follows:
 
 ### Position Equations
 
@@ -17,9 +9,7 @@ The position of the robot can be calculated using the following equations:
 - `x = r(ω1 + ω2 + ω3)cosθ`
 - `y = r(ω1 + ω2 + ω3)sinθ`
 
-Here, `ω1`, `ω2`, and `ω3` represent the angular velocities of the wheels, and `θ` is the orientation of the robot.
-
-#### Proof:
+**Proof:**
 
 To derive the position equations, we consider the motion of the robot's center of mass in the x and y coordinates. The linear velocity of the center of mass is given by `v = r(ω1 + ω2 + ω3)`. Integrating this velocity over time, we obtain the position equations `x = r(ω1 + ω2 + ω3)cosθ` and `y = r(ω1 + ω2 + ω3)sinθ`.
 
@@ -29,7 +19,7 @@ The orientation of the robot can be calculated using the following equation:
 
 - `θ = (r/d)(ω1 - ω3)`
 
-#### Proof:
+**Proof:**
 
 To derive the orientation equation, we consider the rotational motion of the robot. The angular velocity of the robot is given by `ω = (ω1 - ω3)`. Integrating this angular velocity over time, we obtain the orientation equation `θ = (r/d)(ω1 - ω3)`.
 
@@ -42,7 +32,7 @@ The linear and angular velocities of the robot can be calculated using the follo
 
 These equations describe the linear and angular velocities of the robot based on the angular velocities of its wheels.
 
-### Kinematic Constraints
+## Kinematic Constraints
 
 There are kinematic constraints on the robot's motion due to its three-wheeled configuration. These constraints can be expressed as equations:
 
