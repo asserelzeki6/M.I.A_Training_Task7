@@ -2,7 +2,8 @@
 This file contains the code for a robot controller.
 
 The robot controller calculates the angular velocities of the two motors
-and sets the PWM of the motors. It also updates the PID controller.
+and sets the PWM of the motors. It also updates the PID controller. It also  Converts from the local frame of robot to the 
+global frame of the world using a rotational matrix.
 """
 
 import math
@@ -10,6 +11,37 @@ import time
 
 from motor import Motor
 from pid import PID
+import numpy as np
+
+def local_to_global(local_coordinates, theta):
+    """
+    Convert local coordinates to global coordinates using a rotational matrix.
+
+    Args:
+        local_coordinates (tuple): A tuple containing the local (x, y) coordinates.
+        theta (float): The angle of rotation (in radians).
+
+    Returns:
+        tuple: A tuple containing the global (x, y) coordinates.
+    """
+    # Extract local (x, y) coordinates
+    x_local, y_local = local_coordinates
+
+    # Define the rotational matrix
+    rotation_matrix = np.array([[np.cos(theta), -np.sin(theta)],
+                                [np.sin(theta), np.cos(theta)]])
+
+    # Create a column vector for the local coordinates
+    local_vector = np.array([[x_local], [y_local]])
+
+    # Perform the coordinate transformation
+    global_vector = np.dot(rotation_matrix, local_vector)
+
+    # Extract the global (x, y) coordinates from the result
+    x_global = global_vector[0][0]
+    y_global = global_vector[1][0]
+
+    return x_global, y_global
 
 def get_angular_velocities(vx, vy, omega):
     """
@@ -69,15 +101,20 @@ def main():
 
     # Set the target position.
     target_position = [100, 100]
-
+    global_position = [0, 0]
+    theta = 0
     # Start the loop.
     while True:
         # Calculate the robot's velocity and angular velocity.
         vx, vy, omega = get_angular_velocities(target_position[0] - motor_1.position,
-                                              target_position[1] - motor_2.position, 0)
+                                              target_position[1] - motor_2.position, theta)
 
         # Calculate the angular velocities of the three motors.
         w1, w2, w3 = get_angular_velocities(vx, vy, omega)
+
+        # Convert from the local frame of robot to the global frame of the world using a rotational matrix
+        global_position = local_to_global(target_position, theta)
+        print("Global coordinates are :", global_position)
 
         # Set the PWM (RPM) of the motors.
         motor_1.set_pwm(w1)
