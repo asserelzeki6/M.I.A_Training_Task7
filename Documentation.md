@@ -18,8 +18,7 @@ This Arduino program implements a PID (Proportional-Integral-Derivative) control
 A PID controller calculates an error value as the difference between a desired setpoint and a measured process variable. The controller attempts to minimize the error by adjusting the process control inputs. The PID controller calculation involves three separate parameters: the proportional, the integral, and derivative values. The Laplace form of the equation is:
 
 $$
-C(s) = K_p + K_i/s + K_d*s
-
+C(s) = K_p + \frac{K_i}{s} + K_d \cdot s
 $$
 
 where:
@@ -33,8 +32,7 @@ where:
 The time domain form of the PID control algorithm is:
 
 $$
-+ u(t) = K_p*e(t) + K_i*∫(from 0 to t) e(τ) dτ + K_d*de(t)/dt
-
+u(t) = K_p \cdot e(t) + K_i \cdot \int_0^t e(\tau) d\tau + K_d \cdot \frac{de(t)}{dt}
 $$
 
 where:
@@ -50,8 +48,7 @@ The proportional term produces an output value that is proportional to the curre
 The equation for this term is:
 
 $$
-P_out = K_p*e(t)
-
+P_{\text{out}} = K_p \cdot e(t)
 $$
 
 ## Integral Term
@@ -62,7 +59,6 @@ The equation for this term is:
 
 $$
 I_out = K_i*∫(from 0 to t) e(τ) dτ
-
 $$
 
 ## Derivative Term
@@ -73,7 +69,6 @@ The equation for this term is:
 
 $$
 D_out = K_d*de(t)/dt
-
 $$
 
 By tuning these three constants properly, a PID controller can adjust its outputs to cater to different systems dynamically.
